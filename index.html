@@ -15,40 +15,46 @@
     <header class="container">
       <div class="row">
         <h1
-          class="col-12 text-center text-white font-weight-bold"
+          class="col-12 text-center text-white fw-bold fs-2 p-3"
           style="background-image: linear-gradient(102deg, #287aea 0%, #3445d7 24%, #1b1462 91%)"
         >
           Weather Dashboard
         </h1>
       </div>
-      <div class="container">
-        <div class="row">
-          <h2 class="row font-weight-bold">Search for a City:</h2>
-          <div class="row my-3">
+      <div class="row">
+        <div class="col-4">
+          <div class="fw-bold fs-2">Search for a City:</div>
+          <div class="my-3">
             <input
               type="search"
-              class="form-control border border-secondary rounded"
+              class="form-control border border-secondary rounded p-2 fs-4"
               name="cityName"
               id="cityName"
               placeholder="City Name"
             />
           </div>
-          <div class="row">
-            <button type="submit" class="btn btn-primary text-black-50" id="searchCity">Search</button>
-          </div>
-          <div class="row border border-dark my-4">
-            <div class="row" id="savedCityNames"></div>
+          <button type="submit" class="btn btn-primary w-100 text-black-50" id="searchCity">Search</button>
+          <div class="border border-dark my-4">
+            <div id="savedCityNames"></div>
           </div>
         </div>
-        <div class="container">
+        <div class="col-8">
           <div class="row">
-            <div class="col display-4" id="currCity">Atlanta<span id="currDate"></span></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
+            <div class="col border border-dark p-2">
+              <div class="fw-bold h1"><span id="currCity">Atlanta</span><span id="currDate"></span></div>
+              <div id="temp">Temp:</div>
+              <div id="wind">Wind:</div>
+              <div id="humid">Humidity:</div>
+              <div id="uvIndex">UV Index:</div>
+            </div>
           </div>
-          <div class="row"></div>
+          <div class="row pt-3">
+            <h2 class="fs-4 fw-bold">5-Day Forecast:</h2>
+          </div>
+          <div class="d-flex flex-row gap-3 flex-wrap text-wrap fs-5 fw-bold text-light">
+            <div class="m-2 bg-secondary p-2">Lorem ipsum dolor sit amet.</div>
+            <div class="m-2 bg-secondary p-2">Lorem ipsum dolor sit amet.</div>
+          </div>
         </div>
       </div>
     </header>
