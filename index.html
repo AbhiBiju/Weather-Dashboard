@@ -34,18 +34,20 @@
             />
           </div>
           <button type="submit" class="btn btn-primary w-100 text-black-50" id="searchBtn">Search</button>
-          <div class="border border-dark my-4">
-            <div id="savedCityNames"></div>
-          </div>
+          <div class="border border-dark my-4"></div>
+          <div id="searchHistory"></div>
         </div>
         <div class="col-8">
           <div class="row">
             <div class="col border border-dark p-2">
-              <div class="fw-bold h1"><span id="currCity">Atlanta</span><span id="currDate"></span></div>
-              <div id="temp">Temp:</div>
-              <div id="wind">Wind:</div>
-              <div id="humid">Humidity:</div>
-              <div id="uvIndex">UV Index:</div>
+              <div class="fw-bold h1">
+                <span id="currCity">Atlanta</span><span id="currDate"></span
+                ><img id="wicon" src="" alt="" />
+              </div>
+              <div>Temp: <span id="temp"></span>°F</div>
+              <div>Wind: <span id="wind"></span> MPH</div>
+              <div>Humidity: <span id="humid"></span> %</div>
+              <div>UV Index: <span id="uvIndex"></span></div>
             </div>
           </div>
           <div class="row pt-3">
