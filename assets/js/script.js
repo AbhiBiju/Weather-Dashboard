@@ -1,6 +1,7 @@
 //Get cityName from Search Input on SearchBtn Click
 var cityInput = $("#cityName");
 var searchBtn = $("#searchBtn");
+cityInput.focus();
 
 // Search Weather Api with cityCoords
 async function getCityWeather() {
@@ -63,15 +64,15 @@ async function getCityWeather() {
   var uvIndex = $("#uvIndex");
   var uvi = fullWeather.current.uvi;
   if (uvi <= 2) {
-    var uvBtn = $('<button class="btn btn-success text-white">');
+    var uvBtn = $('<button class="btn btn-success fs-4 text-white">');
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   } else if (uvi >= 3 && uvi <= 5) {
-    var uvBtn = $('<button class="btn btn-warning text-white">');
+    var uvBtn = $('<button class="btn btn-warning fs-4 text-white">');
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   } else if (uvi >= 6) {
-    var uvBtn = $('<button class="btn btn-danger text-white">');
+    var uvBtn = $('<button class="btn btn-danger fs-4 text-white">');
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   }
@@ -131,7 +132,7 @@ function renderSearchHistory() {
     var newBtnGroup = $(
       '<div class="btn-group d-flex align-items-stretch my-2" role="group" aria-label="City Button">'
     );
-    var newBtn = $(`<button class="btn btn-secondary fs-4 w-100">`);
+    var newBtn = $(`<button class="btn btn-secondary fs-4 w-100" style="opacity:0.7;">`);
     var closeBtn = $(`<button type="button" class="btn btn-close p-3 fs-4 bg-secondary" aria-label="Close">`);
 
     newBtn.text(city);
@@ -150,6 +151,14 @@ searchBtn.click(() => {
   renderSearchHistory();
 });
 
+cityInput.keydown((event) => {
+  if (event.which == 13) {
+    getCityWeather();
+    saveTheCity();
+    renderSearchHistory();
+  }
+});
+
 $(document).on("click", ".btn-close", (event) => {
   var thisCity = event.target;
   var parentEl = thisCity.parentElement;
@@ -166,9 +175,11 @@ $(document).on("click", ".btn-close", (event) => {
 
 $(document).on("click", ".btn-secondary", (event) => {
   var savedCity = event.target.innerText;
-  cityInput.val(savedCity).replace(/\s/g, "+");
+  cityInput.val(savedCity);
 
   getCityWeather();
+
+  cityInput.val("");
 });
 
 //Local Storage for Previous Searches
