@@ -114,7 +114,7 @@ var savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
 
 function saveTheCity() {
   //  Add new Button with current City Name as text and value
-  var thisCity = cityInput.val().replace(/\s/g, "+");
+  var thisCity = cityInput.val();
   if (thisCity != "") {
     savedCities.unshift(thisCity);
   } else {
@@ -166,7 +166,9 @@ $(document).on("click", ".btn-close", (event) => {
 
 $(document).on("click", ".btn-secondary", (event) => {
   var savedCity = event.target.innerText;
-  console.log(savedCity);
+  cityInput.val(savedCity).replace(/\s/g, "+");
+
+  getCityWeather();
 });
 
 //Local Storage for Previous Searches
