@@ -36,10 +36,12 @@ async function getCityWeather() {
 
   //  Update City Name and Date (Weather Based Icon)
   var cityTitle = $("#currCity");
+  var currCountry = $("#country");
   var currDate = $("#currDate");
   var weatherImg = $("#wicon");
 
   cityTitle.text(weather.name);
+  currCountry.text(weather.sys.country);
 
   var today = moment(weather.dt, "X").format("(M/DD/YYYY)");
   currDate.text(today);
@@ -91,6 +93,8 @@ async function getCityWeather() {
 
     var getIcon = $(`#${index}-img`);
     var iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
+
+    getIcon.attr("style", "width: 4rem; height: 4rem");
     getIcon.attr("src", iconUrl);
 
     var getTemp = $(`#${index}-temp`);
@@ -181,8 +185,3 @@ $(document).on("click", ".btn-secondary", (event) => {
 
   cityInput.val("");
 });
-
-//Local Storage for Previous Searches
-// event.target for the clicked button
-// on click run the search and update function
-// pass in the button.value as cityName
