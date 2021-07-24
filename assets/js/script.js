@@ -3,35 +3,35 @@ var cityInput = $("#cityName");
 var searchBtn = $("#searchBtn");
 
 // Search Weather Api with cityCoords
-async function convertCity() {
+async function getCityWeather() {
   var cityValue = cityInput.val().replace(/\s/g, "+");
-  console.log(cityValue);
+  // console.log(cityValue);
 
   //  Convert cityName to cityCoords
   const cityToCoords = await fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&limit=1&appid=ca658b3681c8bcc081b9fb02fedb375d`
   );
   const coords = await cityToCoords.json();
-  console.log(coords);
+  // console.log(coords);
 
   var latCurrent = coords[0].lat;
   var lonCurrent = coords[0].lon;
-  console.log(latCurrent);
-  console.log(lonCurrent);
+  // console.log(latCurrent);
+  // console.log(lonCurrent);
 
   const getWeather = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=ca658b3681c8bcc081b9fb02fedb375d`
   );
 
   const weather = await getWeather.json();
-  console.log(weather);
+  // console.log(weather);
 
   const getFullWeather = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${latCurrent}&lon=${lonCurrent}&appid=ca658b3681c8bcc081b9fb02fedb375d`
   );
 
   const fullWeather = await getFullWeather.json();
-  console.log(fullWeather);
+  // console.log(fullWeather);
 
   //  Update City Name and Date (Weather Based Icon)
   var cityTitle = $("#currCity");
@@ -75,6 +75,38 @@ async function convertCity() {
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   }
+
+  //5 Day foreCast
+
+  // Get 5day data
+  var fiveDays = fullWeather.daily.splice(0, 5);
+
+  // Make new card for each day in data
+  fiveDays.forEach((day, index, arr) => {
+    var getDay = $(`#${index}-day`);
+
+    var convertedDay = moment(day.dt, "X").format("ddd MMMM, DD");
+    getDay.text(convertedDay);
+
+    var getIcon = $(`#${index}-img`);
+    var iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
+    getIcon.attr("src", iconUrl);
+
+    var getTemp = $(`#${index}-temp`);
+    var convertedTemp = Math.round(((parseInt(day.temp.day) - 273.15) * 9) / 5 + 32);
+    getTemp.text(convertedTemp);
+
+    var getWind = $(`#${index}-wind`);
+    var windSpeed = day.wind_speed;
+    getWind.text(windSpeed);
+
+    var getHumid = $(`#${index}-humid`);
+    var humid = day.humidity;
+    getHumid.text(humid);
+  });
+  // Render card Date
+  // Render Icon based on Weather
+  // Render Temp Wind Humid for each date
 }
 
 // Save cityName to localStorage
@@ -91,70 +123,51 @@ function saveTheCity() {
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
 }
 
-function renderCities() {
+function renderSearchHistory() {
   var getHistory = $("#searchHistory");
   getHistory.empty();
 
   for (city of savedCities) {
-    var newBtn = $(`<button class="btn btn-secondary fs-4 w-100 my-1 d-flex justify-content-between">`);
-    var closeBtn = $(`<button type="button" class="btn-close" aria-label="Close">`);
+    var newBtnGroup = $(
+      '<div class="btn-group d-flex align-items-stretch my-2" role="group" aria-label="City Button">'
+    );
+    var newBtn = $(`<button class="btn btn-secondary fs-4 w-100">`);
+    var closeBtn = $(`<button type="button" class="btn btn-close p-3 fs-4 bg-secondary" aria-label="Close">`);
+
     newBtn.text(city);
-    newBtn.append(closeBtn);
-    getHistory.append(newBtn);
+    newBtnGroup.append(newBtn);
+    newBtnGroup.append(closeBtn);
+    getHistory.append(newBtnGroup);
   }
 }
-renderCities();
+renderSearchHistory();
 
 var savedBtns = $('button[class*="btn-secondary"]');
-var closeThis = $('button[class*="btn-close"]');
-
-console.log("first");
-console.log(savedBtns);
-console.log(closeThis);
 
 searchBtn.click(() => {
-  convertCity();
+  getCityWeather();
   saveTheCity();
-  renderCities();
-
-  savedBtns = $('button[class*="btn-secondary"]');
-  closeThis = $('button[class*="btn-close"]');
-  console.log("second");
-  console.log(savedBtns);
-  console.log(closeThis);
+  renderSearchHistory();
 });
 
-closeThis.click((event) => {
+$(document).on("click", ".btn-close", (event) => {
   var thisCity = event.target;
   var parentEl = thisCity.parentElement;
 
-  console.log("third");
-  console.log(savedBtns);
-  console.log(closeThis);
-
-  console.log(parentEl.innerText);
   for (var i = 0; i < savedCities.length; i++) {
     if (parentEl.innerText === savedCities[i]) {
       savedCities.splice(i, 1);
     }
   }
+
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
-  console.log(thisCity);
-  console.log(parentEl);
   parentEl.remove();
 });
 
-savedBtns.click((event) => {
+$(document).on("click", ".btn-secondary", (event) => {
   var savedCity = event.target.innerText;
   console.log(savedCity);
 });
-
-//5 Day foreCast
-// Get 5day data
-// Make new card for each day in data
-// Render card Date
-// Render Icon based on Weather
-// Render Temp Wind Humid for each date
 
 //Local Storage for Previous Searches
 // event.target for the clicked button
