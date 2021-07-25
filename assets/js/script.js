@@ -119,10 +119,11 @@ var savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
 
 function saveTheCity() {
   //  Add new Button with current City Name as text and value
-  var thisCity = cityInput.val();
+  var thisCity = cityInput.val().trim();
   if (thisCity != "") {
     savedCities.unshift(thisCity);
   } else {
+    cityInput.val("");
     cityInput.attr("placeholder", "Please Enter A City");
   }
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
@@ -136,8 +137,8 @@ function renderSearchHistory() {
     var newBtnGroup = $(
       '<div class="btn-group d-flex align-items-stretch my-2" role="group" aria-label="City Button">'
     );
-    var newBtn = $(`<button class="btn btn-secondary fs-4 w-100" style="opacity:0.7;">`);
-    var closeBtn = $(`<button type="button" class="btn btn-close p-3 fs-4 bg-secondary" aria-label="Close">`);
+    var newBtn = $(`<button class="btn btn-secondary p-0 fs-6 w-75" style="opacity:0.7;">`);
+    var closeBtn = $(`<button type="button" class="btn btn-close p-3 fs-6 bg-secondary" aria-label="Close">`);
 
     newBtn.text(city);
     newBtnGroup.append(newBtn);

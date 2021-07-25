@@ -52,6 +52,11 @@
       #searchBtn {
         opacity: 0.8;
       }
+      @media (max-width: 979px) {
+        body {
+          padding-top: 0px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -82,24 +87,24 @@
     <main class="container-fluid px-4">
       <div class="row">
         <div class="col-2 h-100 py-3">
-          <div class="fw-bold fs-2">Search for a City:</div>
+          <div class="fw-bold fs-4">Search for a City:</div>
           <div class="my-3">
             <input
               type="text"
-              class="form-control rounded p-2 fs-4"
+              class="form-control rounded p-2 fs-5"
               name="cityName"
               id="cityName"
               placeholder="City Name"
               style="border: none; background: rgba(216, 246, 252, 0.747)"
             />
           </div>
-          <button type="submit" class="btn btn-primary w-100 fs-4 text-white p-2" id="searchBtn">Search</button>
+          <button type="submit" class="btn btn-primary w-100 fs-5 text-white p-1" id="searchBtn">Search</button>
           <div class="border border-secondary my-4"></div>
-          <div id="searchHistory" style="overflow: scroll; height: 30rem"></div>
+          <div id="searchHistory" style="overflow: scroll; height: 21rem"></div>
         </div>
         <div class="col-10 h-100">
-          <div class="d-flex flex-column justify-content-around p-3 h-75 fs-3 gap-3">
-            <div class="fw-bold h1">
+          <div class="d-flex flex-column justify-content-around p-3 h-75 fs-5 gap-3">
+            <div class="fw-bold fs-2">
               <span id="currCity">City Name</span>, <span id="country">Country</span> <span id="currDate">(Date)</span
               ><img id="wicon" src="" alt="" />
             </div>
@@ -109,9 +114,9 @@
             <div>UV Index: <span id="uvIndex"></span></div>
           </div>
           <div class="row pt-3">
-            <h2 class="fs-2 fw-bold p-2 px-4">5-Day Forecast:</h2>
+            <h2 class="fs-3 fw-bold p-2 px-4">5-Day Forecast:</h2>
           </div>
-          <div id="5-days" class="d-flex flex-row gap-2 flex-wrap text-wrap fs-5 fw-bold text-white">
+          <div id="5-days" class="d-flex flex-row gap-2 flex-wrap text-wrap fs-6 fw-bold text-white">
             <div class="card d-flex flex-column justify-content-around p-3" style="width: 14rem; height: 14rem">
               <h3 class="card-title">Date: <span id="0-day"></span></h3>
               <img id="0-img" src="" alt="" />
