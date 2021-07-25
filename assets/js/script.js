@@ -88,7 +88,7 @@ async function getCityWeather() {
   fiveDays.forEach((day, index, arr) => {
     var getDay = $(`#${index}-day`);
 
-    var convertedDay = moment(day.dt, "X").format("ddd MMMM, DD");
+    var convertedDay = moment(day.dt, "X").format("dddd, MMMM Do");
     getDay.text(convertedDay);
 
     var getIcon = $(`#${index}-img`);
@@ -109,9 +109,6 @@ async function getCityWeather() {
     var humid = day.humidity;
     getHumid.text(humid);
   });
-  // Render card Date
-  // Render Icon based on Weather
-  // Render Temp Wind Humid for each date
 }
 
 // Save cityName to localStorage
