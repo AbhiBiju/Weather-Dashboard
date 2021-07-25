@@ -66,15 +66,15 @@ async function getCityWeather() {
   var uvIndex = $("#uvIndex");
   var uvi = fullWeather.current.uvi;
   if (uvi <= 2) {
-    var uvBtn = $('<button class="btn btn-success fs-4 text-white">');
+    var uvBtn = $('<button class="btn btn-success fs-6 text-white">');
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   } else if (uvi >= 3 && uvi <= 5) {
-    var uvBtn = $('<button class="btn btn-warning fs-4 text-white">');
+    var uvBtn = $('<button class="btn btn-warning fs-6 text-white">');
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   } else if (uvi >= 6) {
-    var uvBtn = $('<button class="btn btn-danger fs-4 text-white">');
+    var uvBtn = $('<button class="btn btn-danger fs-6 text-white">');
     uvBtn.text(uvi);
     uvIndex.html(uvBtn);
   }
