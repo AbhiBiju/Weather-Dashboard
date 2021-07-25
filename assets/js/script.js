@@ -10,7 +10,7 @@ async function getCityWeather() {
 
   //  Convert cityName to cityCoords
   const cityToCoords = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&limit=1&appid=ca658b3681c8bcc081b9fb02fedb375d`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&limit=1&appid=ca658b3681c8bcc081b9fb02fedb375d`
   );
   const coords = await cityToCoords.json();
   // console.log(coords);
@@ -46,7 +46,7 @@ async function getCityWeather() {
   var today = moment(weather.dt, "X").format("(M/DD/YYYY)");
   currDate.text(today);
 
-  var iconUrl = `http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
+  var iconUrl = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
   weatherImg.attr("src", iconUrl);
 
   //  Update Temp Wind Humid
@@ -92,7 +92,7 @@ async function getCityWeather() {
     getDay.text(convertedDay);
 
     var getIcon = $(`#${index}-img`);
-    var iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
+    var iconUrl = `https://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
 
     getIcon.attr("style", "width: 4rem; height: 4rem");
     getIcon.attr("src", iconUrl);
