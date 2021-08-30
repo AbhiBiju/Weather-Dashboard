@@ -117,7 +117,7 @@ var savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
 function saveTheCity() {
   //  Add new Button with current City Name as text and value
   var thisCity = cityInput.val().trim();
-  if (thisCity != "") {
+  if (thisCity != "" && savedCities.indexOf(thisCity) === -1) {
     savedCities.unshift(thisCity);
   } else {
     cityInput.val("");

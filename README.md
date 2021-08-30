@@ -6,4 +6,4 @@ It utilizes Local Storage and event listeners to save searched cities for later 
 The deployed application can be found at: [abhibiju.github.io/Weather-Dashboard](https://abhibiju.github.io/Weather-Dashboard)
 
 Here is what the website currently looks like:
-![Screenshot of Application](/assets/WDS.png?raw=true "Screenshot of Weather Dashboard Site")
+![Screenshot of Application](/assets/media/WDS.png?raw=true "Screenshot of Weather Dashboard Site")
