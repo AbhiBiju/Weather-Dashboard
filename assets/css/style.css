@@ -1,0 +1,48 @@
+body {
+  background-image: url(https://images.unsplash.com/photo-1438045809872-34a58ff469f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2922&q=80);
+  background-size: cover;
+  /* color: hsl(238 100% 84%); */
+  color: hsl(175, 70%, 50%, 60%);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1 {
+  width: 100%;
+  opacity: 0.7;
+  backdrop-filter: blur(20px);
+}
+.col-lg-2 {
+  background-color: hsl(245, 66%, 23%, 50%);
+  border-radius: 15px;
+  scrollbar-width: thin;
+  backdrop-filter: blur(20px);
+  margin-bottom: 0.5rem;
+}
+.h-75 {
+  background-color: hsl(245, 66%, 23%, 30%);
+  border-radius: 15px;
+  backdrop-filter: blur(20px);
+}
+.card {
+  background-color: hsl(180, 100%, 75%, 20%);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  color: hsla(0, 100%, 10%, 0.603);
+}
+input {
+  opacity: 0.8;
+}
+::-webkit-scrollbar {
+  scrollbar-width: thin;
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b1462;
+  width: 15px;
+}
+#searchBtn {
+  opacity: 0.8;
+}
+#searchHistory {
+  overflow: scroll;
+  height: 11rem;
+}

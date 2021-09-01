@@ -87,7 +87,6 @@ async function getCityWeather() {
   // Make new card for each day in data
   fiveDays.forEach((day, index, arr) => {
     var getDay = $(`#${index}-day`);
-
     var convertedDay = moment(day.dt, "X").format("dddd, MMMM Do");
     getDay.text(convertedDay);
 

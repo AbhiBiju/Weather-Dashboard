@@ -10,50 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <style>
-      body {
-        background-image: url(https://images.unsplash.com/photo-1438045809872-34a58ff469f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2922&q=80);
-        background-size: cover;
-        color: hsl(238 100% 84%);
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      h1 {
-        width: 100%;
-        opacity: 0.7;
-        backdrop-filter: blur(20px);
-      }
-      .col-2 {
-        background-color: hsl(245, 66%, 23%, 50%);
-        border-radius: 15px;
-        scrollbar-width: thin;
-        backdrop-filter: blur(20px);
-      }
-      .h-75 {
-        background-color: hsl(245, 66%, 23%, 30%);
-        border-radius: 15px;
-        backdrop-filter: blur(20px);
-      }
-      .card {
-        background-color: hsl(180, 100%, 75%, 20%);
-        backdrop-filter: blur(20px);
-        border-radius: 15px;
-        color: rgba(255, 255, 255, 0.603);
-      }
-      input {
-        opacity: 0.8;
-      }
-      ::-webkit-scrollbar {
-        scrollbar-width: thin;
-        display: none;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1b1462;
-        width: 15px;
-      }
-      #searchBtn {
-        opacity: 0.8;
-      }
-    </style>
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <header>
@@ -82,7 +39,7 @@
 
     <main class="container-fluid px-4">
       <div class="row">
-        <div class="col-2 h-100 py-3">
+        <div id="box" class="col-lg-2 col-sm-12 h-100 py-3">
           <div class="fw-bold fs-4">Search for a City:</div>
           <div class="my-3">
             <input
@@ -96,9 +53,9 @@
           </div>
           <button type="submit" class="btn btn-primary w-100 fs-5 text-white p-1" id="searchBtn">Search</button>
           <div class="border border-secondary my-4"></div>
-          <div id="searchHistory" style="overflow: scroll; height: 21rem"></div>
+          <div id="searchHistory"></div>
         </div>
-        <div class="col-10 h-100">
+        <div class="col-lg-10 col-sm-12 h-100">
           <div class="d-flex flex-column justify-content-around p-3 h-75 fs-5 gap-3">
             <div class="fw-bold fs-2">
               <span id="currCity">City Name</span>, <span id="country">Country</span> <span id="currDate">(Date)</span
